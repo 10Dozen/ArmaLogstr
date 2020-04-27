@@ -2,7 +2,7 @@
 Small in-game log tool for Arma 3
 
 ### Installation
-Put initLogster.sqf to mission folder and execute file via (e.g. at the first line of `init.sqf`):
+Put `initLogster.sqf` to mission folder and execute file via (e.g. at the first line of `init.sqf`):
 ```sqf
 call compile preProcessFileLineNumbers "initLogster.sqf";
 ```
