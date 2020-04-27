@@ -31,9 +31,9 @@ You can also pass up to 10 parameters to your log message:
 // 00:00:10.823 [MyLog][6][LOG] My logged message with 123 and [1,2,3] params
 ```
 
-#### Customization 
+### Customization 
 
-##### Custom log function
+#### Custom log function
 To customize log function, just make a wrapper for `dzn_Logster_fnc_doLog` function:
 ```sqf
 #define PARAMS_LIST_STR ["_param1",""],["_param2",""],["_param3",""],["_param4",""],["_param5",""],["_param6",""],["_param7",""],["_param8",""],["_param9",""],["_param10",""]
@@ -53,13 +53,13 @@ DoLog = {
 // 00:00:10.823 [MySingleLog][1][MSG] My custom log message
 ```
 
-##### Default outputs
+#### Default outputs
 To change default outputs use:
 ```sqf
 LogsterSettings setVariable ["default_outputs", "diary,sideChat"];
 ```
 
-##### Log type formatting
+#### Log type formatting
 To update formatting of log types (log, info, warn and err) :
 ```sqf
 // Default shortcuts values
