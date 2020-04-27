@@ -23,6 +23,8 @@ To log something you need just use any of the function below:
 ["MyLog", "My info message"] call Infostr;  // 00:00:05.353 [MyLog][2][INFO] My info message
 ["MyLog", "My warn message"] call Warnstr;  // 00:00:06.353 [MyLog][3][WARN] My warn message
 ["MyLog", "My error message"] call Errstr;  // 00:00:07.153 [MyLog][4][ERR] My error message
+// all log entries are formatted as:
+//   <time from mission start> [<log name>][<log entity number>][<log type>] <log message>
 ```
 
 You can also pass up to 10 parameters to your log message:
@@ -60,7 +62,7 @@ LogsterSettings setVariable ["default_outputs", "diary,sideChat"];
 ```
 
 #### Log type formatting
-To update formatting of log types (log, info, warn and err) :
+To update formatting of log types (`log`, `info`, `warn` and `err`) :
 ```sqf
 // Default shortcuts values
 LogsterSettings setVariable ["L", "[LOG]"];
@@ -85,6 +87,6 @@ or add custom types:
 LogsterSettings setVariable ["MSG", "[MSG]"];
 // Styling for hint
 LogsterSettings setVariable ["ST_MSG", "[<t color='#00aabb'>MSG</t>]"];
-// Stuling for diary
+// Styling for diary
 LogsterSettings setVariable ["T_MSG", "[<font color='#00aabb'>MSG</font>]"];
 ```
