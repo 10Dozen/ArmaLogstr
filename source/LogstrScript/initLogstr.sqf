@@ -128,7 +128,7 @@ dzn_Logstr_fnc_formatText = {
 		};
 		case "diary": {
 			_logLevel = LogstrSettings getVariable ["T_" + _logLevel, "[" + _logLevel + "]"];
-			_result = format ["<font size='10' face='EtelkaMonospacePro'>%1 [%2][%3]%4 ", _time, _threadName, _logIndex, _logLevel] + _logEntry + "</font>";
+			_result = format ["<font size='10' face='EtelkaMonospacePro'>%1 [%2]%3 ", _time, _logIndex, _logLevel] + _logEntry + "</font>";
 		};
 		case "structured": {
 			_logLevel = LogstrSettings getVariable ["ST_" + _logLevel, "[" + _logLevel + "]"];
