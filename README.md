@@ -1,17 +1,17 @@
-# ArmaLogster
+# ArmaLogstr
 Small in-game log tool for Arma 3
 
 ### Installation
-Put `initLogster.sqf` to mission folder and execute file via (e.g. at the first line of `init.sqf`):
+Put `initLogstr.sqf` to mission folder and execute file via (e.g. at the first line of `init.sqf`):
 ```sqf
-call compile preProcessFileLineNumbers "initLogster.sqf";
+call compile preProcessFileLineNumbers "initLogstr.sqf";
 ```
 
 ### Usage
-By default Logster provide output Diary and sideChat. To configure output you need to manually create log thread before logging:
+By default Logstr provide output Diary and sideChat. To configure output you need to manually create log thread before logging:
 ```sqf
 ["MyLog", "diary,sidechat,hint,rpt"] call AddLogThread;
-// diary    - log entry is added to Diary record (Logster -> MyLog topic); logged lines may be copied to clipboard via diary buttons
+// diary    - log entry is added to Diary record (Logstr -> MyLog topic); logged lines may be copied to clipboard via diary buttons
 // sidechat - log entry is displayed via sideChat 
 // hint     - log entry is displayed via hintSilent (as formatted structued text)
 // rpt      - log entry is dumped to RPT file (via diag_log, as structured text)
@@ -36,7 +36,7 @@ You can also pass up to 10 parameters to your log message:
 ### Customization 
 
 #### Custom log function
-To customize log function, just make a wrapper for `dzn_Logster_fnc_doLog` function:
+To customize log function, just make a wrapper for `dzn_Logstr_fnc_doLog` function:
 ```sqf
 #define PARAMS_LIST_STR ["_param1",""],["_param2",""],["_param3",""],["_param4",""],["_param5",""],["_param6",""],["_param7",""],["_param8",""],["_param9",""],["_param10",""]
 #define PARAMS_LIST _param1, _param2, _param3, _param4, _param5, _param6, _param7, _param8, _param9, _param10
@@ -48,7 +48,7 @@ DoLog = {
         , "MSG"
         , _msg
         , PARAMS_LIST
-    ] call dzn_Logster_fnc_doLog;
+    ] call dzn_Logstr_fnc_doLog;
 };
 
 ["My custom log message"] call DoLog;
@@ -58,35 +58,42 @@ DoLog = {
 #### Default outputs
 To change default outputs use:
 ```sqf
-LogsterSettings setVariable ["default_outputs", "diary,sideChat"];
+LogstrSettings setVariable ["default_outputs", "diary,sideChat"];
+```
+
+#### Update outputs for thread
+To change default outputs use:
+```sqf
+["MyLog", "outputs: diary"] call dzn_Logstr_fnc_applyOptions; 
+// Change output options for MyLog thread to Diary only
 ```
 
 #### Log type formatting
 To update formatting of log types (`log`, `info`, `warn` and `err`) :
 ```sqf
 // Default shortcuts values
-LogsterSettings setVariable ["L", "[LOG]"];
-LogsterSettings setVariable ["I", "[INF]"];
-LogsterSettings setVariable ["W", "[WARN]"];
-LogsterSettings setVariable ["E", "[ERR]"];
+LogstrSettings setVariable ["L", "[LOG]"];
+LogstrSettings setVariable ["I", "[INF]"];
+LogstrSettings setVariable ["W", "[WARN]"];
+LogstrSettings setVariable ["E", "[ERR]"];
 
 // Default types as structured text
-LogsterSettings setVariable ["ST_L", "[<t color='#8ac5d1'>LOG</t>]"];
-LogsterSettings setVariable ["ST_I", "[<t color='#a4d194'>INF</t>]"];
-LogsterSettings setVariable ["ST_W", "[<t color='#fc6f03'>WARN</t>]"];
-LogsterSettings setVariable ["ST_E", "[<t color='#ff4545'>ERR</t>]"];
+LogstrSettings setVariable ["ST_L", "[<t color='#8ac5d1'>LOG</t>]"];
+LogstrSettings setVariable ["ST_I", "[<t color='#a4d194'>INF</t>]"];
+LogstrSettings setVariable ["ST_W", "[<t color='#fc6f03'>WARN</t>]"];
+LogstrSettings setVariable ["ST_E", "[<t color='#ff4545'>ERR</t>]"];
 
 // Default types as diary record text
-LogsterSettings setVariable ["T_L", "[<font color='#8ac5d1'>LOG</font>]"];
-LogsterSettings setVariable ["T_I", "[<font color='#a4d194'>INF</font>]"];
-LogsterSettings setVariable ["T_W", "[<font color='#fc6f03'>WARN</font>]"];
-LogsterSettings setVariable ["T_E", "[<font color='#ff4545'>ERR</font>]"];
+LogstrSettings setVariable ["T_L", "[<font color='#8ac5d1'>LOG</font>]"];
+LogstrSettings setVariable ["T_I", "[<font color='#a4d194'>INF</font>]"];
+LogstrSettings setVariable ["T_W", "[<font color='#fc6f03'>WARN</font>]"];
+LogstrSettings setVariable ["T_E", "[<font color='#ff4545'>ERR</font>]"];
 ```
 or add custom types:
 ```sqf
-LogsterSettings setVariable ["MSG", "[MSG]"];
+LogstrSettings setVariable ["MSG", "[MSG]"];
 // Styling for hint
-LogsterSettings setVariable ["ST_MSG", "[<t color='#00aabb'>MSG</t>]"];
+LogstrSettings setVariable ["ST_MSG", "[<t color='#00aabb'>MSG</t>]"];
 // Styling for diary
-LogsterSettings setVariable ["T_MSG", "[<font color='#00aabb'>MSG</font>]"];
+LogstrSettings setVariable ["T_MSG", "[<font color='#00aabb'>MSG</font>]"];
 ```
