@@ -62,7 +62,7 @@ LogstrSettings setVariable ["default_outputs", "diary,sideChat"];
 ```
 
 #### Update outputs for thread
-To change default outputs use:
+To change outputs for specific log thread use:
 ```sqf
 ["MyLog", "outputs: diary"] call dzn_Logstr_fnc_applyOptions; 
 // Change output options for MyLog thread to Diary only
