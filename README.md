@@ -1,6 +1,9 @@
 # ArmaLogstr
 Small in-game log tool for Arma 3
 
+### Requirements:
+CBA_A3
+
 ### Installation
 Put `initLogstr.sqf` to mission folder and execute file via (e.g. at the first line of `init.sqf`):
 ```sqf
